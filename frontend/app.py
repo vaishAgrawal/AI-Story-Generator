@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 
-BACKEND_URL = "https://ai-story-generator-56j9.onrender.com"
 
 st.set_page_config(page_title="AI Story Generator")
 
