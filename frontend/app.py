@@ -5,12 +5,12 @@ import os
 
 load_dotenv()
 
-BACKEND_URL = os.getenv("BACKEND_URL")
+BACKEND_URL = os.getenv("https://ai-story-generator-56j9.onrender.com")
 
 st.set_page_config(page_title="AI Story Generator")
 
 st.title("📖 AI Story Generator")
-st.write("VERSION TEST - 08 AUG")
+
 
 genre = st.selectbox(
     "Select Genre",
