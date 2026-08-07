@@ -35,7 +35,7 @@ length = st.selectbox(
 if st.button("Generate Story"):
 
     response = requests.post(
-        "http://127.0.0.1:8000/story",
+        "BACKEND_URL",
         json={
             "genre": genre,
             "characters": characters,
