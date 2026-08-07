@@ -10,6 +10,7 @@ BACKEND_URL = os.getenv("BACKEND_URL")
 st.set_page_config(page_title="AI Story Generator")
 
 st.title("📖 AI Story Generator")
+st.write("VERSION TEST - 08 AUG")
 
 genre = st.selectbox(
     "Select Genre",
