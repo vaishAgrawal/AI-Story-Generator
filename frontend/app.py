@@ -1,23 +1,15 @@
 import streamlit as st
 import requests
 
+BACKEND_URL = "https://ai-story-generator-56j9.onrender.com"
 
 st.set_page_config(page_title="AI Story Generator")
 
 st.title("📖 AI Story Generator")
 
-
 genre = st.selectbox(
     "Select Genre",
-    [
-        "Adventure",
-        "Horror",
-        "Fantasy",
-        "Comedy",
-        "Romance",
-        "Sci-Fi",
-        "Mystery"
-    ]
+    ["Adventure", "Horror", "Fantasy", "Comedy", "Romance", "Sci-Fi", "Mystery"]
 )
 
 characters = st.text_input(
@@ -27,29 +19,23 @@ characters = st.text_input(
 
 length = st.selectbox(
     "Story Length",
-    [
-        "Short",
-        "Medium",
-        "Long"
-    ]
+    ["Short", "Medium", "Long"]
 )
 
 if st.button("Generate Story"):
 
     response = requests.post(
-        "https://ai-story-generator-56j9.onrender.com",
+        "https://ai-story-generator-56j9.onrender.com/story",
         json={
             "genre": genre,
             "characters": characters,
             "length": length
-        }
+        },
+        timeout=60
     )
 
     if response.status_code == 200:
-        story = response.json()["story"]
-
         st.subheader("Generated Story")
-        st.write(story)
-
+        st.write(response.json()["story"])
     else:
-        st.error(f"Backend Error: {response.text}")
+        st.error(response.text)
