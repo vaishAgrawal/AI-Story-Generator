@@ -6,7 +6,6 @@ import os
 load_dotenv()
 
 BACKEND_URL = os.getenv("BACKEND_URL")
-st.write("BACKEND_URL =", BACKEND_URL)
 
 st.set_page_config(page_title="AI Story Generator")
 
@@ -50,8 +49,11 @@ if st.button("Generate Story"):
         }
     )
 
-    story = response.json()["story"]
+if response.status_code == 200:
+        story = response.json()["story"]
 
-    st.subheader("Generated Story")
+        st.subheader("Generated Story")
+        st.write(story)
 
-    st.write(story)
+else:
+        st.error(f"Backend Error: {response.text}")
