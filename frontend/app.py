@@ -48,14 +48,12 @@ if st.button("Generate Story"):
             "length": length
         }
     )
-    st.write("STATUS:", response.status_code)
-    st.write("RESPONSE:", response.text)
 
-if response.status_code == 200:
+    if response.status_code == 200:
         story = response.json()["story"]
 
         st.subheader("Generated Story")
         st.write(story)
 
-else:
+    else:
         st.error(f"Backend Error: {response.text}")
