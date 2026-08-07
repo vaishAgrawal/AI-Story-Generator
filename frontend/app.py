@@ -1,6 +1,11 @@
 import streamlit as st
 import requests
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+BACKEND_URL = os.getenv("BACKEND_URL")
 st.set_page_config(page_title="AI Story Generator")
 
 st.title("📖 AI Story Generator")
@@ -35,7 +40,7 @@ length = st.selectbox(
 if st.button("Generate Story"):
 
     response = requests.post(
-        "BACKEND_URL",
+        f"{BACKEND_URL}/generate-story",
         json={
             "genre": genre,
             "characters": characters,
