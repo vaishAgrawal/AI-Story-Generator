@@ -1,6 +1,12 @@
+```python
 import streamlit as st
 import requests
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BACKEND_URL = os.getenv("BACKEND_URL")
 
 st.set_page_config(page_title="AI Story Generator")
 
@@ -24,7 +30,7 @@ length = st.selectbox(
 if st.button("Generate Story"):
 
     response = requests.post(
-        "https://ai-story-generator-56j9.onrender.com/story",
+        f"{BACKEND_URL}/story",
         json={
             "genre": genre,
             "characters": characters,
@@ -39,3 +45,4 @@ if st.button("Generate Story"):
     else:
         st.error(f"Backend Error: {response.status_code}")
         st.code(response.text)
+```
