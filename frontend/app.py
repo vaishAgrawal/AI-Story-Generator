@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 
 st.set_page_config(page_title="AI Story Generator")
 
@@ -33,9 +34,8 @@ if st.button("Generate Story"):
     )
 
     if response.status_code == 200:
-        story = response.json()["story"]
         st.subheader("Generated Story")
-        st.write(story)
+        st.write(response.json()["story"])
     else:
         st.error(f"Backend Error: {response.status_code}")
         st.code(response.text)
