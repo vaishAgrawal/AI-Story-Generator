@@ -44,3 +44,4 @@ if st.button("Generate Story"):
     else:
         st.error(f"Backend Error: {response.status_code}")
         st.code(response.text)
+
