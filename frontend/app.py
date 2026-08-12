@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 import requests
 import os
@@ -45,4 +44,3 @@ if st.button("Generate Story"):
     else:
         st.error(f"Backend Error: {response.status_code}")
         st.code(response.text)
-```
